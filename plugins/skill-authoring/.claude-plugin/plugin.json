@@ -1,0 +1,14 @@
+{
+  "name": "skill-authoring",
+  "version": "0.1.0",
+  "description": "Rules for writing and reviewing skills: what belongs in a skill, which fixed choices are rules or defaults, section order, and a review checklist.",
+  "author": {
+    "name": "AlfreShen"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "authoring",
+    "review"
+  ]
+}

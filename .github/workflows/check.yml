@@ -1,0 +1,16 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate marketplace and plugin
+        # Pinned so CI changes only when this line does; bump it deliberately.
+        run: npx -y @anthropic-ai/claude-code@2.1.304 plugin validate .
+

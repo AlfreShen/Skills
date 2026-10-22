@@ -1,0 +1,19 @@
+{
+  "name": "AlfreShen",
+  "description": "General-purpose skills for Claude: slide decks, architecture diagrams, and skill writing.",
+  "owner": {
+    "name": "AlfreShen"
+  },
+  "plugins": [
+    {
+      "name": "presentation",
+      "source": "./plugins/presentation",
+      "description": "Informational slide decks and architecture diagrams that hold up to scrutiny."
+    },
+    {
+      "name": "skill-authoring",
+      "source": "./plugins/skill-authoring",
+      "description": "Rules for writing and reviewing skills so they stay general across projects."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "skill-authoring",
-  "version": "0.1.0",
-  "description": "Rules for writing and reviewing skills: what belongs in a skill, which fixed choices are rules or defaults, section order, and a review checklist.",
+  "version": "0.2.0",
+  "description": "Rules for writing and reviewing skills: what belongs in a skill, which fixed choices are rules or defaults, section order, and a review checklist; and a workflow for turning a settled way of working into a skill.",
   "author": {
     "name": "AlfreShen"
   },
@@ -9,6 +9,7 @@
   "keywords": [
     "skills",
     "authoring",
-    "review"
+    "review",
+    "extraction"
   ]
 }

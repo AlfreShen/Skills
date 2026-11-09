@@ -6,8 +6,8 @@ General-purpose skills for Claude, packaged as a plugin marketplace. Each skill 
 
 | Plugin | Skills | What they do |
 |---|---|---|
-| `presentation` | `slides`, `arch-diagram` | `slides`: rules for informational slide decks: claims grounded in sources, a title sequence that tells the argument, consistent terms and units, figures that match the system they depict, layout checked before publishing; Claude Slides limits included. `arch-diagram`: an architecture or data-flow diagram of a codebase or system as an editable draw.io file, verified against the code, machine-checked and render-checked; bundles a generator script. |
-| `skill-authoring` | `skill-rules` | Rules for writing and reviewing skills: what belongs in a skill and what belongs to a project or to you, which fixed choices are rules and which are defaults, section order, and a review checklist. |
+| `presentation` | `slides`, `arch-diagram`, `eli5` | `slides`: rules for informational slide decks: claims grounded in sources, a title sequence that tells the argument, consistent terms and units, figures that match the system they depict, layout checked before publishing; Claude Slides limits included. `arch-diagram`: an architecture or data-flow diagram of a codebase or system as an editable draw.io file, verified against the code, machine-checked and render-checked; bundles a generator script. `eli5`: a one-page HTML explanation of a topic for a reader new to it, mostly visuals; runs only when you name it. |
+| `skill-authoring` | `skill-rules`, `skill-extraction` | `skill-rules`: rules for writing and reviewing skills: what belongs in a skill and what belongs to a project or to you, which fixed choices are rules and which are defaults, section order, and a review checklist. `skill-extraction`: a workflow for turning a way of working that settled through repeated correction into a skill or rule document: record the source material first, decide where it belongs, generalise, write, and have a fresh agent test it. |
 
 ## Install
 

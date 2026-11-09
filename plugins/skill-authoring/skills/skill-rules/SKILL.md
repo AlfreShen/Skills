@@ -5,7 +5,7 @@ description: "Rules for writing, revising or reviewing a SKILL.md so it stays ge
 
 # Skill rules
 
-A skill is used across many projects and by people who never saw the conversation it came from. Most skills are drafted inside one project, so that project's audience, names, paths, cases and habits leak in by default. This holds also for a skill stored inside one project: its project-specific content still goes in that project's instructions, so the skill can be moved or shared later. A rule can be correct and still be in the wrong place or the wrong order; both make the skill harder to follow.
+A skill is used across many projects and by people who never saw the conversation it came from. Most skills are drafted inside one project, so that project's audience, names, paths, cases and habits leak in by default. This holds also for a skill stored inside one project: its project-specific content still goes in that project's instructions, so the skill can be moved or shared later. A **taste skill** is a skill kept inside one project that records one person's taste for work in that project; it is part of that project's instructions, not a shared skill. A rule can be correct and still be in the wrong place or the wrong order; both make the skill harder to follow.
 
 Project-specific content lives in **the project's own instructions**: its `CLAUDE.md`, its Project instructions, or files the user points to. The agent already has them in context; a skill only states that they take precedence over its defaults.
 
@@ -45,6 +45,7 @@ For every line, ask two questions: **would this still be true in a different pro
 | Concrete examples and cases (section 4) | The project's own instructions |
 | A project fact needed by several skills (data locations, terminology) | The project's own instructions, stated once for all skills |
 | How the user wants replies written (language, length, tone, honesty conventions) | The user's own settings (for example `~/.claude/CLAUDE.md` or account preferences), never a skill |
+| Personal taste about how a kind of work is done (a product's look, wording or interaction; how documents or reports are written) | The project's own instructions by default (a taste skill counts); the user's own settings only where the user's own process for changes that span projects puts it there; never a shared skill |
 | The user's personal workflow: where they keep project material, how it gets loaded, how they maintain and release skills | The user's own settings or a private repository, never a shared skill |
 | Maintenance guidance the agent needs while doing the task (where to record a correction the user makes) | The skill, in one line |
 | The procedure for folding a user's correction into a skill (classifying it, rewriting, checking) | This skill, not the skill being maintained |
@@ -61,7 +62,7 @@ Leaving every open choice to the agent makes output vary from run to run, so a s
 
 1. **Correctness rule**: without it the output is wrong or misleading. State it as a rule.
 2. **Consistency requirement**: some choice must be made, and any reasonable choice works if it is applied throughout one output and kept when that output is revised. Require the consistency, not a particular choice. Where outputs of separate runs must match each other, the choice needs a default.
-3. **Default**: one specific value for a consistency requirement. Keep it, marked as a default with its reason, if the values a competent practitioner would reasonably choose instead give worse output for a reason you can state. If they are merely different, it is personal taste and belongs in the user's own settings.
+3. **Default**: one specific value for a consistency requirement. Keep it, marked as a default with its reason, if the values a competent practitioner would reasonably choose instead give worse output for a reason you can state. If they are merely different, it is personal taste and belongs in the project's own instructions or the user's own settings.
 
 A value that a bundled script must hold anyway (a corner style, a spacing constant) is a default even when its only reason is that some value is needed; document it as overridable.
 
@@ -104,6 +105,7 @@ Within the body:
 - Concrete examples come from a project and go in that project's own instructions, where they cannot mislead other projects.
 - Not examples, and allowed: a list of the generic kinds a rule covers (a scope list), format specifications and output templates, and a short API usage snippet for a bundled script, all written with neutral placeholders (`<name>`, `YYYY-MM`) or invented generic values, never content taken from a project.
 - Never include real project names, repository paths, people, internal URLs, project-specific datasets or models, secrets or credentials.
+- A taste skill is exempt from the rules above on examples and cases: each rule may carry the person's own words and its source. People are still named only by a role word, and their names stay in the skill's record file (the file that keeps the raw material and its sources, outside the skill).
 
 ## 5. Content hygiene
 
@@ -120,7 +122,7 @@ When the user corrects a skill's output, classify the correction before editing:
 
 1. **General**: rewrite the relevant section so the whole class of mistake is prevented. Do not add a narrow special case.
 2. **Project-specific**: add it to that project's own instructions and leave the skill unchanged.
-3. **The user's own preference**: a reply preference, a matter of personal taste, or the user's personal workflow. It goes in the user's own settings, not in any skill.
+3. **The user's own preference**: a reply preference or the user's personal workflow goes in the user's own settings. A matter of personal taste goes in the project's own instructions by default (a taste skill counts); the user's own settings only where the user's own process for changes that span projects puts it there. None of them goes in a shared skill.
 4. **Unclear**: ask the user which it is.
 
 State the destination you chose and why in one line. If a rule later turns out to be general, move it from the project's instructions into the skill and delete it there, so it never exists twice.
@@ -129,9 +131,9 @@ State the destination you chose and why in one line. If a rule later turns out t
 
 Run this on the whole skill before it ships, in this order, and report each finding with its line and the fix. When the user asked for a limited edit, fix findings in the lines you changed and list the others without fixing them.
 
-1. **Placement** (section 1): `description` holds only what (in a phrase) and when, including couplings to other skills, not the method; the body states how work is divided with another skill and does not restate triggers; `compatibility` holds only requirements or is omitted; long or variant-specific material is in `references/` with when-to-read guidance; repeated deterministic code is in `scripts/`; project audience, purpose, structure, vocabulary, document templates, styling, pitfalls, cases and shared facts are moved to the project's instructions; reply preferences, personal taste and personal workflow are moved to the user's settings; each project case is reduced to its general lesson; moved content was added to its destination or handed to the user; every fixed choice is a correctness rule, a consistency requirement or a marked default with its reason.
+1. **Placement** (section 1): `description` holds only what (in a phrase) and when, including couplings to other skills, not the method; the body states how work is divided with another skill and does not restate triggers; `compatibility` holds only requirements or is omitted; long or variant-specific material is in `references/` with when-to-read guidance; repeated deterministic code is in `scripts/`; project audience, purpose, structure, vocabulary, document templates, styling, pitfalls, cases and shared facts are moved to the project's instructions; reply preferences and personal workflow are moved to the user's settings, and personal taste to the project's instructions or the user's settings; each project case is reduced to its general lesson; moved content was added to its destination or handed to the user; every fixed choice is a correctness rule, a consistency requirement or a marked default with its reason.
 2. **Project conventions** (section 2): present unless the scope says why the skill is exempt; identical, heading included, to the block in the other skills of the same plugin or marketplace; right after the scope; nothing about where or how a user stores project material.
 3. **Order** (section 3): sections follow the order there; forward references occur only in a workflow summary; rules are grouped by when they are applied and pitfalls sit with their steps; no rule is stated twice; one term per concept.
-4. **Examples** (section 4): no examples or cases; every rule applies without one; scope lists, format specifications, templates and API snippets use neutral placeholders; no real project names, repository paths, people, internal URLs, project datasets or models, secrets or credentials.
+4. **Examples** (section 4): no examples or cases, except a taste skill's own words and sources as section 4 allows; every rule applies without one; scope lists, format specifications, templates and API snippets use neutral placeholders; no real project names, repository paths, people, internal URLs, project datasets or models, secrets or credentials.
 5. **Hygiene** (section 5): contradictions, necessity, environment pins, frontmatter, references and code, size and structure.
 6. **Feedback** (section 6): each folded correction was classified and its destination stated; no rule exists both in the skill and in a project's instructions; no narrow special case was added.

@@ -1,6 +1,6 @@
 {
   "name": "presentation",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Informational slide decks and architecture diagrams: grounded claims, consistent terms, figures that match the system, editable draw.io diagrams checked against the code, and one-page visual explanations for a reader new to a topic.",
   "author": {
     "name": "AlfreShen"
